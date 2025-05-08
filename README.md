@@ -160,3 +160,77 @@ If a team values **maintainability**, **clarity**, and **developer speed**, then
 It doesn’t just catch bugs.
 It helps one write better, cleaner, and more scalable code from day one.
 
+<h1>#The difference between any, unknown, and never types in TypeScript.</h1>
+Absolutely! Here's a well-structured **non-tabular explanation** of the difference between `any`, `unknown`, and `never` in TypeScript — perfect for narrative-style blog content:
+
+---
+
+###  `any`
+
+The `any` type disables type checking. Once a variable is declared as `any`, TypeScript essentially stops checking its usage. You can assign any value to it — string, number, object, etc. — and call any method on it, even if that method doesn't exist. This might sound flexible, but it defeats the purpose of using TypeScript and introduces the risk of runtime errors.
+
+**Example:**
+
+```ts
+let anything: any = "hello";
+anything.toFixed(); // No compile-time error, but can crash at runtime
+```
+
+**Why to avoid**: It removes all benefits of TypeScript’s type safety. Use it only as a last resort or for quick prototyping.
+
+---
+
+###  `unknown`
+
+The `unknown` type is a safer alternative to `any`. It allows you to assign any value, but **prevents you from using it** until you perform a proper type check. This forces developers to validate types before using them, improving reliability and reducing runtime errors.
+
+**Example:**
+
+```ts
+let value: unknown = "123";
+
+if (typeof value === "string") {
+  console.log(value.toUpperCase()); // Safe after type checking
+}
+```
+
+ **Why to use**: Ideal when you receive data from dynamic sources like APIs or user input, and you want to enforce type safety without knowing the type upfront.
+
+---
+
+###  `never`
+
+The `never` type represents values that **never occur**. It’s typically used for:
+
+* Functions that always throw errors
+* Functions that contain infinite loops
+* Exhaustive `switch` statements to ensure all cases are handled
+
+**Example 1 (throwing error):**
+
+```ts
+function fail(): never {
+  throw new Error("Something went wrong");
+}
+```
+
+**Example 2 (infinite loop):**
+
+```ts
+function loopForever(): never {
+  while (true) {
+    console.log("Still running...");
+  }
+}
+```
+
+ **Why to use**: Helps indicate that a function should not return under any circumstance. It improves code clarity and enforces completeness, especially in condition handling.
+
+---
+
+### key notes
+
+* **Use `any`** when you temporarily need full flexibility — but avoid it in production code.
+* **Use `unknown`** when you don’t yet know the type but want to ensure it's checked before use.
+* **Use `never`** to represent unreachable or terminating code, such as errors or infinite loops.
+
