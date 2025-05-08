@@ -146,8 +146,13 @@ No more **mystery bugs from form inputs**. You deliver better user experiences b
 
 As your codebase grows, your team expands, and project requirements evolve...
 
-**JavaScript** bends—sometimes until it breaks.
-**TypeScript** scales with you, providing structure and confidence.
+**JavaScript:** 
+
+> bends—sometimes until it breaks.
+
+**TypeScript:** 
+
+> scales with you, providing structure and confidence.
 
 **💡 Impact:**
 TypeScript protects your product and team against the chaos of long-term projects. It’s not just a tool—it’s a safety net.
